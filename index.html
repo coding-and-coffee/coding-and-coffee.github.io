@@ -108,7 +108,18 @@
 				setTimeout(function(){
 					to_the_left();
 		    		},100);
-			}    			
+			}
+
+			$(window).click(function(){
+
+				if($(".player").position().top > -52){
+						$(".player").css({"top":"-90px"});
+						setTimeout(function(){
+							$(".player").css({"top":"-50px"});
+						},250);
+					}
+
+			});    			
     
 			$(document).keydown(function(e){
 				if (e.which == 32) {
