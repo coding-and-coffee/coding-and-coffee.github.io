@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Tic Tac Toe!</title>
+
+    <style>
+      body {
+        text-align: center;
+        font-family: "Arial", "sans-serif";
+      }
+      body > div:first-child {
+        margin-top: 100px;
+      }
+
+      body > div div {
+        height: 100px;
+        width: 100px;
+        border: 2px solid #191919;
+        display: inline-block;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        margin: 5px;
+        font-size: 40px;
+        line-height: 100px;
+        vertical-align: top;
+      }
+      body > div div:hover {
+        transform: scale(1.05);
+        background: rgba(255, 69, 0, 0.25);
+      }
+      .won {
+        background: #60cc60;
+      }
+      button {
+        font-size: 1.5em;
+        background: orangered;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+      }
+      .result {
+        font-size: 1.3em;
+        margin: 30px 0px;
+      }
+      .result p {
+        display: inline-block;
+        margin: 10px;
+      }
+      .disable {
+        pointer-events: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <section class="result">
+      <p><b>You: </b><span id="player_score">0</span></p>
+      <p><b>Draw: </b><span id="draw_score">0</span></p>
+      <p><b>Computer: </b><span id="computer_score">0</span></p>
+    </section>
+    <a href=""><button class="mb-3">Reset</button></a>
+    <p class="text-center mt-4 p-2">
+      You can also play the annoying game
+      <a href="index.html">here</a>!
+    </p>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        var draw_s = 0;
+        var player_s = 0;
+        var computer_s = 0;
+        var new_game = 0;
+
+        var wins = [
+          [
+            [1, 1],
+            [1, 2],
+            [1, 3],
+          ],
+          [
+            [2, 1],
+            [2, 2],
+            [2, 3],
+          ],
+          [
+            [3, 1],
+            [3, 2],
+            [3, 3],
+          ],
+          [
+            [1, 1],
+            [2, 1],
+            [3, 1],
+          ],
+          [
+            [1, 2],
+            [2, 2],
+            [3, 2],
+          ],
+          [
+            [1, 3],
+            [2, 3],
+            [3, 3],
+          ],
+          [
+            [1, 1],
+            [2, 2],
+            [3, 3],
+          ],
+          [
+            [1, 3],
+            [2, 2],
+            [3, 1],
+          ],
+        ];
+
+        var player = ["O", "X"];
+
+        function wingame() {
+          for (i = 0; i < wins.length; i++) {
+            let computer_count = 0;
+            for (j = 0; j < wins[i].length; j++) {
+              if (
+                $(
+                  "body > div:nth-child(" +
+                    wins[i][j][0] +
+                    ") div:nth-child(" +
+                    wins[i][j][1] +
+                    ")"
+                ).html() == "X"
+              ) {
+                computer_count += 1;
+                if (computer_count == 2) {
+                  for (j = 0; j < wins[i].length; j++) {
+                    if (
+                      $(
+                        "body > div:nth-child(" +
+                          wins[i][j][0] +
+                          ") div:nth-child(" +
+                          wins[i][j][1] +
+                          ")"
+                      ).html() == ""
+                    ) {
+                      $(
+                        "body > div:nth-child(" +
+                          wins[i][j][0] +
+                          ") div:nth-child(" +
+                          wins[i][j][1] +
+                          ")"
+                      ).html("X");
+
+                      for (j = 0; j < wins[i].length; j++) {
+                        $(
+                          "body > div:nth-child(" +
+                            wins[i][j][0] +
+                            ") div:nth-child(" +
+                            wins[i][j][1] +
+                            ")"
+                        ).addClass("won");
+
+                        new_game = 1;
+                      }
+
+                      computer_s += 1;
+                      $("#computer_score").html(computer_s);
+                      return true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        function stopwin() {
+          for (i = 0; i < wins.length; i++) {
+            player_count = 0;
+            for (j = 0; j < wins[i].length; j++) {
+              if (
+                $(
+                  "body > div:nth-child(" +
+                    wins[i][j][0] +
+                    ") div:nth-child(" +
+                    wins[i][j][1] +
+                    ")"
+                ).html() == "O"
+              ) {
+                player_count += 1;
+                if (player_count == 2) {
+                  for (j = 0; j < wins[i].length; j++) {
+                    if (
+                      $(
+                        "body > div:nth-child(" +
+                          wins[i][j][0] +
+                          ") div:nth-child(" +
+                          wins[i][j][1] +
+                          ")"
+                      ).html() == ""
+                    ) {
+                      $(
+                        "body > div:nth-child(" +
+                          wins[i][j][0] +
+                          ") div:nth-child(" +
+                          wins[i][j][1] +
+                          ")"
+                      ).html("X");
+
+                      return true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        function makemove() {
+          for (i = 0; i < wins.length; i++) {
+            let computer_count = 0;
+            for (j = 0; j < wins[i].length; j++) {
+              if (
+                $(
+                  "body > div:nth-child(" +
+                    wins[i][j][0] +
+                    ") div:nth-child(" +
+                    wins[i][j][1] +
+                    ")"
+                ).html() == "X"
+              ) {
+                computer_count += 1;
+                if (computer_count == 1) {
+                  for (j = 0; j < wins[i].length; j++) {
+                    if (
+                      $(
+                        "body > div:nth-child(" +
+                          wins[i][j][0] +
+                          ") div:nth-child(" +
+                          wins[i][j][1] +
+                          ")"
+                      ).html() == ""
+                    ) {
+                      $(
+                        "body > div:nth-child(" +
+                          wins[i][j][0] +
+                          ") div:nth-child(" +
+                          wins[i][j][1] +
+                          ")"
+                      ).html("X");
+                      return true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        function firstmove() {
+          //First move
+          var row = Math.floor(Math.random() * 3) + 1;
+          var col = Math.floor(Math.random() * 3) + 1;
+          var still_empty = 0;
+          for (i = 1; i <= 3; i++) {
+            for (j = 1; j <= 3; j++) {
+              if (
+                $(
+                  "body >div:nth-child(" + i + ") div:nth-child(" + j + ")"
+                ).html() == ""
+              )
+                var still_empty = 1;
+              break;
+            }
+          }
+          if (still_empty) {
+            try {
+              if (
+                $(
+                  "body > div:nth-child(" + row + ") div:nth-child(" + col + ")"
+                ).html() == ""
+              ) {
+                $(
+                  "body > div:nth-child(" + row + ") div:nth-child(" + col + ")"
+                ).html("X");
+                return true;
+              } else {
+                firstmove();
+              }
+            } catch {
+              console.log("error");
+            }
+          } else {
+            draw_s += 1;
+            $("body > div div").removeClass("won").html("");
+            $("#draw_score").html(draw_s);
+          }
+        }
+
+        function computerplays() {
+          //prevent user to make a move and wait for some time to show computer move.
+          $("div").addClass("disable");
+          setTimeout(() => {
+            if (!wingame()) {
+              if (!stopwin()) {
+                if (!makemove()) {
+                  firstmove();
+                }
+              }
+            }
+            $("div").removeClass("disable");
+          }, 700);
+        }
+
+        function yourmove(clk, callback) {
+          if ($(clk).html() == "") {
+            $(clk).html("O");
+            try {
+              for (i = 0; i < wins.length; i++) {
+                let pc = 0;
+                for (j = 0; j < wins[i].length; j++) {
+                  if (
+                    $(
+                      "body > div:nth-child(" +
+                        wins[i][j][0] +
+                        ") div:nth-child(" +
+                        wins[i][j][1] +
+                        ")"
+                    ).html() == "O"
+                  ) {
+                    pc += 1;
+                    if (pc == 3) {
+                      for (j = 0; j < wins[i].length; j++) {
+                        $(
+                          "body > div:nth-child(" +
+                            wins[i][j][0] +
+                            ") div:nth-child(" +
+                            wins[i][j][1] +
+                            ")"
+                        ).addClass("won");
+                        new_game = 1;
+                      }
+                      //increase global count
+                      player_s += 1;
+                      $("#player_score").html(player_s);
+                      return;
+                    }
+                  }
+                }
+              }
+            } catch (err) {
+              console.log("error");
+            }
+
+            callback();
+          } else {
+            console.log("Not empty");
+          }
+        }
+
+        $("body > div div").click(function () {
+          if (new_game) {
+            $("body > div div").removeClass("won").html("");
+            new_game = 0;
+          } else {
+            yourmove(this, computerplays);
+          }
+        });
+      }); //ready
+    </script>
+  </body>
+</html>

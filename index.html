@@ -1,167 +1,177 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <title>So annoying!</title>
     <style>
-    	html{
-    		overflow: hidden;
-    	}
-    	/**{
+      html {
+        overflow: hidden;
+      }
+      /**{
     		margin:0px !important;
     		padding: 0px !important;
     	}*/
-    	.hc{
-    		height: 500px;
-    		text-align: center;
-    	}
-    	.hc div{
-    		width: 20px;
-    		height: 20px;
-    		border: solid;
-    		display: inline-block;
-			margin-top: 250px;
-			transition: all 1s ease-in;
-    	}
-    	.ground{
-    		height:2px;
-    		background: black;
-    		position: relative;
-    	}
-    	.player{
-    		height: 50px;
-    		width:10px;
-    		background: red;
-    		position: absolute;
-    		top: -50px;
-    		left:200px;
-    		transition: all .3s ease-in-out;
-    	}
-    	.obs{
-    		height: 30px;
-    		width: 20px;
-    		background: black;
-    		position: absolute;
-    		top:-30px;
-    		right: 10px;
-    		transition: all 4s ease-out;
-    	}
-
+      .hc {
+        height: 500px;
+        text-align: center;
+      }
+      .hc div {
+        width: 20px;
+        height: 20px;
+        border: solid;
+        display: inline-block;
+        margin-top: 250px;
+        transition: all 1s ease-in;
+      }
+      .ground {
+        height: 2px;
+        background: black;
+        position: relative;
+      }
+      .player {
+        height: 50px;
+        width: 10px;
+        background: red;
+        position: absolute;
+        top: -50px;
+        left: 200px;
+        transition: all 0.3s ease-in-out;
+      }
+      .obs {
+        height: 30px;
+        width: 20px;
+        background: black;
+        position: absolute;
+        top: -30px;
+        right: 10px;
+        transition: all 3s ease-out;
+      }
     </style>
-   </head>
-   <body>
-   	
-	<div>
-		
-		<div class="hc">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-		<div class="ground">
-			<div class="player"></div>
-			<div class="obs"></div>
-		</div>
-	</div>
+  </head>
+  <body>
+    <p class="text-center mt-3 p-2">
+      Enjoy this annoying game! You can also play tic tac toe
+      <a href="tictac.html">here</a>!
+    </p>
+    <div>
+      <div class="hc">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="ground">
+        <div class="player"></div>
+        <div class="obs"></div>
+      </div>
+    </div>
 
-
-
-   	 <script
+    <script
       src="https://code.jquery.com/jquery-3.4.1.js"
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-      crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
     <script>
-    	$(document).ready(function(){
+      $(document).ready(function () {
+        var vwidth = $(window).width();
+        var right_timeout;
+        var success = 1;
 
-    		var vwidth = $(window).width();
-    		var right_timeout;
-    		var success = 1;
+        trackgame();
+        to_the_left();
 
-    		trackgame();
-    		to_the_left();
+        function to_the_left() {
+          $(".obs").css({ transition: "all 3s ease-out" });
+          $(".obs").css({ right: vwidth + "px" });
+          right_timeout = setTimeout(function () {
+            to_the_right();
+            success += 1;
+          }, 3000);
+        }
 
-    		function to_the_left(){
-    			$(".obs").css({"transition":"all 3s ease-out"});
-    			$(".obs").css({"right":vwidth+"px"});
-    			right_timeout = setTimeout(function(){
-					to_the_right();
-					success+=1;
-		    		},3000);
-    		}
+        function to_the_right() {
+          $(".obs").css({ transition: "none", right: "-10px" });
+          setTimeout(function () {
+            to_the_left();
+          }, 100);
+        }
 
-			function to_the_right(){
-				$(".obs").css({"transition":"none","right":"-10px"});
-				setTimeout(function(){
-					to_the_left();
-		    		},100);
-			}
+        $(window).click(function () {
+          if ($(".player").position().top > -52) {
+            $(".player").css({ top: "-100px" });
+            setTimeout(function () {
+              $(".player").css({ top: "-50px" });
+            }, 300);
+          }
+        });
 
-			$(window).click(function(){
+        $(document).keydown(function (e) {
+          if (e.which == 32) {
+            if ($(".player").position().top > -52) {
+              $(".player").css({ top: "-100px" });
+              setTimeout(function () {
+                $(".player").css({ top: "-50px" });
+              }, 300);
+            }
+            return false;
+          }
+        });
 
-				if($(".player").position().top > -52){
-						$(".player").css({"top":"-90px"});
-						setTimeout(function(){
-							$(".player").css({"top":"-50px"});
-						},300);
-					}
-
-			});    			
-    
-			$(document).keydown(function(e){
-				if (e.which == 32) {
-					if($(".player").position().top > -52){
-						$(".player").css({"top":"-90px"});
-						setTimeout(function(){
-							$(".player").css({"top":"-50px"});
-						},250);
-					}
-				   return false;
-				}
-			});
-
-			function trackgame(){
-				var interval = setInterval(function(){ 
-				var player_right_position = vwidth - $(".player").position().left - 10;
-				var obs_right_position = vwidth - $(".obs").position().left;
-				var player_top = $(".player").offset().top + 50;
-				var obs_top = $(".obs").offset().top;
-				var horizontal_diff = obs_right_position - player_right_position;
-				var vertical_diff = obs_top - player_top;
-				if(horizontal_diff >= 0 && horizontal_diff <= 30){
-					if(vertical_diff > 0){
-						$(".hc div:nth-child("+success+")").css("background","green");
-					}
-					else{
-						// alert("Fail!!!");
-						clearTimeout(right_timeout);
-						$(".hc div").css("background","white");
-						success = 1;
-						to_the_right();
-					}
-					
-				}
-			
-				}, 10);
-			}
-    	})//ready
-
-
-    	
-
+        function trackgame() {
+          var interval = setInterval(function () {
+            var player_right_position =
+              vwidth - $(".player").position().left - 10;
+            var obs_right_position = vwidth - $(".obs").position().left;
+            var player_top = $(".player").offset().top + 50;
+            var obs_top = $(".obs").offset().top;
+            var horizontal_diff = obs_right_position - player_right_position;
+            var vertical_diff = obs_top - player_top;
+            if (horizontal_diff >= 0 && horizontal_diff <= 30) {
+              if (vertical_diff > 0) {
+                $(".hc div:nth-child(" + success + ")").css(
+                  "background",
+                  "green"
+                );
+              } else {
+                // alert("Fail!!!");
+                clearTimeout(right_timeout);
+                $(".hc div").css("background", "white");
+                success = 1;
+                to_the_right();
+              }
+            }
+          }, 10);
+        }
+      }); //ready
     </script>
-   </body>
-  </html>
+  </body>
+</html>
